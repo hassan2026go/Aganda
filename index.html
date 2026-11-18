@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مفكرتي اليومية</title>
+<link rel="manifest" href="manifest.webmanifest">
+<script src="firebase-config.js"></script>
+<meta name="theme-color" content="#1e8449">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="مفكرتي">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f4ec;--card:#fdfbf7;--ink:#2a1d16;--mute:#7a6a5e;--line:#e2d8ca;--g:#1e8449;--r:#d32f2f;--y:#b07300;--gray:#8a919a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1713;--card:#251f19;--ink:#f1e8dc;--mute:#b3a493;--line:#3b322a}}
+:root[data-theme="dark"]{--bg:#1c1713;--card:#251f19;--ink:#f1e8dc;--mute:#b3a493;--line:#3b322a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Amiri',Tahoma,serif;font-size:18px}
+.wrap{max-width:560px;margin:0 auto;padding:12px 16px 90px}
+.credit{text-align:center;font-family:'Aref Ruqaa','Amiri',serif;font-size:15px;color:var(--mute);margin:2px 0 10px}
+.credit.f{margin:26px 0 0;font-size:14px;opacity:.85}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+h1{font-family:'Aref Ruqaa','Amiri',serif;font-size:36px;margin:0}
+.st{font-size:14px;color:var(--mute);display:flex;gap:6px;align-items:center}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--g)}.off .dot{background:var(--r)}
+.tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:5px;margin-bottom:14px}
+.tab{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:14px;font-weight:700;padding:8px 1px;border-radius:14px;cursor:pointer}
+.tab.a{background:var(--ink);color:var(--bg)}
+.pg{display:none}.pg.a{display:block}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.s{color:#fff;border-radius:22px;padding:12px 4px;text-align:center;min-height:112px;display:flex;flex-direction:column;justify-content:center}
+.s b{font-size:36px;line-height:1.1}.s span{font-size:16px}.s small{font-size:15px}
+.s.g{background:var(--g)}.s.r{background:var(--r)}.s.y{background:var(--y)}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bb{border:0;border-radius:26px;color:#fff;padding:18px 4px;font:inherit;font-weight:700;font-size:22px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.bb i{font-style:normal;font-size:46px;line-height:1}.bb:active{transform:translateY(2px)}
+.bb.g{background:var(--g)}.bb.r{background:var(--r)}.bb.y{background:var(--y)}
+.mic{width:100%;margin-top:12px;border:0;border-radius:26px;background:var(--gray);color:#fff;font:inherit;font-weight:700;font-size:22px;padding:16px;cursor:pointer}
+.mic.on{background:var(--r)}
+.row{display:flex;gap:8px;align-items:center;margin:12px 0}
+.row label{color:var(--mute);font-size:16px}
+input[type=date]{font:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:6px 8px;flex:1}
+details{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px 14px}
+summary{cursor:pointer;color:var(--mute)}
+textarea{width:100%;min-height:70px;margin-top:8px;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);font:inherit;padding:8px 12px}
+.sv{margin-top:8px;border:0;border-radius:12px;background:var(--g);color:#fff;font:inherit;font-weight:700;padding:8px 22px;cursor:pointer}
+.seg{display:flex;gap:6px;margin-bottom:10px}
+.seg button{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:19px;padding:8px;border-radius:14px;cursor:pointer}
+.seg button.a{background:var(--y);color:#fff;border-color:var(--y)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.nav button{border:0;background:var(--card);border:1px solid var(--line);color:var(--ink);width:48px;height:44px;border-radius:14px;font-size:22px;cursor:pointer}
+.nav div{font-size:20px;font-weight:700;text-align:center}
+.it{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:8px}
+.ic{font-size:28px}.it .m{flex:1;min-width:0}.it .d{font-size:14px;color:var(--mute)}
+.it .x{background:none;border:0;color:var(--mute);font-size:24px;cursor:pointer}
+.empty{color:var(--mute)}
+.clr{font:inherit;font-size:14px;color:var(--mute);background:none;border:0;cursor:pointer;margin-top:10px}
+.mic.spk{background:var(--y)}
+.it .sp{background:none;border:0;font-size:28px;cursor:pointer}
+h3{font-size:21px;margin:20px 0 8px}
+.lb{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 14px;margin-bottom:12px;color:var(--mute)}
+.note{display:none;background:#ffe9a8;color:#5c4400;border-radius:16px;padding:12px 14px;margin-bottom:12px;cursor:pointer;font-weight:700}
+.wide{display:flex;flex-direction:row;justify-content:center;align-items:center;gap:10px;width:100%;margin-bottom:10px;padding:16px;font-size:22px}
+.wide i{font-size:32px}
+.rs{background:none;border:1px solid var(--line);border-radius:12px;color:var(--ink);font:inherit;padding:6px 12px;cursor:pointer}
+.ex{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:-6px 0 12px;font-size:15px}
+.ex span{border:1px solid var(--line);border-radius:12px;padding:2px 10px;background:var(--card);color:var(--mute)}
+.ex:empty{display:none}
+.mic.full{background:#5b3fa0;font-size:24px;padding:20px;margin:0 0 12px}
+.mic.full.on{background:var(--r)}
+select{font:inherit;width:100%;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px}
+.card2{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px}
+.fld{display:block;width:100%;font:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px}
+.fl{font-size:14px;color:var(--mute);margin:4px 0 2px;display:block}
+.me{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.av{width:48px;height:48px;border-radius:50%;background:var(--y);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;overflow:hidden;flex:none}
+.av.big2{width:76px;height:76px;font-size:32px}.av img{width:100%;height:100%;object-fit:cover}
+.me b{font-size:20px}.me .d{font-size:14px;color:var(--mute)}
+.chs{display:flex;flex-wrap:wrap;gap:6px}.chs button{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;border-radius:20px;padding:6px 14px;cursor:pointer}.chs button.a{background:var(--g);color:#fff;border-color:var(--g)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bt2{border:0;border-radius:14px;color:#fff;font:inherit;font-weight:700;font-size:18px;padding:12px;cursor:pointer}.bt2.g{background:var(--g)}.bt2.y{background:var(--y)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.cal .wd{font-size:12px;color:var(--mute)}
+.cal .dc{aspect-ratio:1;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:17px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+.cal .dc small{font-size:10px}.cal .dc.w{background:var(--g);color:#fff;border-color:var(--g)}.cal .dc.o{background:var(--r);color:#fff;border-color:var(--r)}.cal .dc.we{opacity:.55}.cal .dc.t{outline:2px solid var(--y)}
+.pn2{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:20px;font-weight:700}.pn2 button{width:48px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;cursor:pointer}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:16px;display:none;gap:14px;align-items:center;z-index:5}
+.toast button{background:none;border:0;color:#ffd77a;font:inherit;font-weight:700;cursor:pointer}
+.md{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;z-index:9}
+.kp{background:var(--bg);width:100%;max-width:460px;border-radius:26px 26px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.amt{font-size:46px;font-weight:700;text-align:center;direction:ltr;padding:6px;color:var(--y);min-height:68px}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr}
+.keys button{font:inherit;font-size:30px;font-weight:700;padding:14px 0;border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.keys .ok{background:var(--g);color:#fff;border:0}.keys .no{background:var(--r);color:#fff;border:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="credit">تقدمة ياسر الحسين</div>
+  <div class="head"><h1>مفكرتي اليومية</h1><div class="st" id="st"><span class="dot"></span><span id="stt">متصل</span></div></div>
+  <div class="me" id="hi"><div class="av" id="av"></div><div><b id="hn"></b><div class="d" id="hs"></div></div></div>
+  <div class="tabs">
+    <button class="tab a" data-p="p1">🏠 اليوم</button>
+    <button class="tab" data-p="p2">📊 الملخص</button>
+    <button class="tab" data-p="p5">📅 التقويم</button>
+    <button class="tab" data-p="p3">📜 السجل</button>
+    <button class="tab" data-p="p4">👤 حسابي</button>
+  </div>
+
+  <button class="mic spk" id="ins" style="display:none;margin:0 0 12px">📲 تثبيت التطبيق على الجهاز</button>
+  <div class="note" id="ios" style="cursor:default">للتثبيت على الآيفون: اضغط زر المشاركة ⬆️ ثم «إضافة إلى الشاشة الرئيسية».</div>
+  <div class="pg a" id="p1">
+    <div class="note" id="bn">⏰ حان وقت حفظ نسخة احتياطية — اضغط هنا</div>
+    <div class="stats">
+      <div class="s g"><b id="cw">0</b><span>أيام العمل</span></div>
+      <div class="s r"><b id="co">0</b><span>أيام العطل</span></div>
+      <div class="s y"><b id="cp">0</b><span>الدفعات</span><small id="cpn">(0)</small></div>
+    </div>
+    <div class="ex" id="ex1"></div>
+    <div class="row"><label>📅 التاريخ</label><input type="date" id="dt"></div>
+    <button class="mic full" id="full">🎙️ تسجيل كامل بالصوت</button>
+    <div class="big">
+      <button class="bb g" id="bw"><i>✅</i>عمل</button>
+      <button class="bb r" id="bo"><i>🏖️</i>عطلة</button>
+      <button class="bb y" id="bp"><i>💰</i>دفعة</button>
+    </div>
+    <button class="mic" id="mic">🎤 تحدّث</button>
+    <button class="mic spk" id="sph">🔊 اسمعني</button>
+    <details><summary>✎ كتابة ملاحظة</summary>
+      <textarea id="txt" placeholder="مثال: اليوم عمل، أو عطلة، أو قبضت دفعة 500"></textarea>
+      <button class="sv" id="save">حفظ</button>
+    </details>
+  </div>
+
+  <div class="pg" id="p2">
+    <div class="seg"><button id="mw" class="a">أسبوعي</button><button id="mm">شهري</button></div>
+    <div class="nav"><button id="nx">▶</button><div id="pl"></div><button id="pv">◀</button></div>
+    <div class="stats">
+      <div class="s g"><b id="sw">0</b><span>أيام العمل</span></div>
+      <div class="s r"><b id="so">0</b><span>أيام العطل</span></div>
+      <div class="s y"><b id="sp">0</b><span>الدفعات</span><small id="spn">(0)</small></div>
+    </div>
+    <div id="wg" style="margin-bottom:12px"></div>
+    <div class="ex" id="ex2"></div>
+    <button class="mic spk" id="rp" style="margin:0 0 12px;background:var(--g)">📨 مشاركة تقرير (واتساب)</button>
+    <button class="mic spk" id="sps" style="margin:0 0 12px">🔊 اسمعني الملخص</button>
+    <div id="sl"></div>
+  </div>
+
+  <div class="pg" id="p4">
+    <div class="card2"><h3 style="margin-top:0">👤 ملفي الشخصي</h3>
+     <div class="me"><div class="av big2" id="prav"></div><div style="display:flex;gap:6px"><button class="rs" id="prpb">📷 صورة</button><button class="rs" id="prpx">إزالة</button></div></div>
+     <input type="file" id="prpic" accept="image/*" hidden>
+     <label class="fl">الاسم الكامل</label><input class="fld" id="prn" autocomplete="name">
+     <label class="fl">المهنة / الوظيفة</label><input class="fld" id="prj">
+     <label class="fl">جهة العمل (ورشة / مكتب / شركة)</label><input class="fld" id="prw">
+     <label class="fl">رقم الهاتف</label><input class="fld" id="prph" type="tel" inputmode="tel">
+     <label class="fl">المدينة / البلد</label><input class="fld" id="prc">
+     <label class="fl">رمز العملة (مثل $ أو ل.ل)</label><input class="fld" id="prcu" maxlength="6">
+     <label class="fl">الأجر اليومي</label><input class="fld" id="prdw" type="number" inputmode="decimal">
+     <label class="fl">أجر الساعة الإضافية</label><input class="fld" id="prot" type="number" inputmode="decimal">
+     <label class="fl">أيام العطلة الأسبوعية</label><div class="chs" id="prwe"></div></div>
+    <div class="card2"><h3 style="margin-top:0">☁️ الحفظ السحابي بالبريد الإلكتروني</h3>
+     <div id="clst" style="color:var(--mute);margin-bottom:8px"></div>
+     <div id="cln" class="empty" style="display:none">السحابة غير مفعّلة بعد في هذه النسخة. لتفعيلها: أنشئ مشروع Firebase مجانيًا والصق إعداداته في ملف firebase-config.js (الخطوات في ملف التعليمات). حتى ذلك الحين استخدم النسخ الاحتياطي بالملف أو واتساب أدناه.</div>
+     <div id="clf" style="display:none"><input class="fld" id="clem" type="email" placeholder="البريد الإلكتروني" autocomplete="email"><input class="fld" id="clpw" type="password" placeholder="كلمة المرور (6 أحرف على الأقل)" autocomplete="current-password">
+      <div class="row2"><button class="bt2 g" id="clin">دخول</button><button class="bt2 y" id="clup">حساب جديد</button></div>
+      <button class="rs" id="clrs" style="margin-top:8px">نسيت كلمة المرور؟</button></div>
+     <div id="clo" style="display:none"><div id="clme" style="margin-bottom:8px"></div>
+      <div class="row2"><button class="bt2 g" id="clsv">☁️ احفظ الآن</button><button class="bt2 y" id="clpl">⬇️ استرجاع</button></div>
+      <button class="rs" id="clout" style="margin-top:8px">تسجيل الخروج</button>
+      <div class="empty" style="font-size:14px;margin-top:8px">تُحفظ بياناتك تلقائيًا في السحابة بعد كل تعديل، وتعمل المفكرة بدون إنترنت وتُزامَن عند عودة الاتصال.</div></div></div>
+    <h3>💾 النسخ الاحتياطي اليدوي</h3>
+    <div class="lb" id="lb">—</div>
+    <button class="bb g wide" id="bsh"><i>📤</i>إرسال نسخة (واتساب)</button>
+    <button class="bb y wide" id="bsf"><i>💾</i>حفظ ملف في الجهاز</button>
+    <button class="bb wide" id="brs" style="background:var(--gray)"><i>📥</i>استرجاع من ملف</button>
+    <input type="file" id="fi" accept=".txt,.json,text/plain,application/json" hidden>
+    <h3>⏰ جدولة النسخ</h3>
+    <div class="seg"><button data-f="d">يوميًا</button><button data-f="w">أسبوعيًا</button><button data-f="m">شهريًا</button></div>
+    <div class="empty" style="font-size:15px">تُحفظ نسخة تلقائيًا على الجهاز حسب الجدول، وتظهر تذكيرة لإرسال نسخة إلى واتساب أو الملفات.</div>
+    <h3>🌐 لهجة الصوت</h3>
+    <select id="lg"><option value="ar-SA">السعودية</option><option value="ar-LB">لبنان</option><option value="ar-SY">سوريا</option><option value="ar-JO">الأردن</option><option value="ar-IQ">العراق</option><option value="ar-EG">مصر</option><option value="ar-AE">الإمارات</option><option value="ar-MA">المغرب</option></select>
+    <div class="empty" style="font-size:15px;margin-top:6px">اختر لهجة بلدك ليفهم التسجيل الصوتي كلامك بشكل أدق.</div>
+    <h3>النسخ المحفوظة (الأحدث أولًا)</h3><div id="sn"></div>
+  </div>
+
+  <div class="pg" id="p5">
+    <div class="pn2"><button id="kn">▶</button><span id="kl"></span><button id="kp">◀</button></div>
+    <div class="cal" id="kg"></div>
+    <div class="empty" style="font-size:14px;margin-top:10px">اضغط على أي يوم لتسجيله عملًا أو عطلة أو إضافة ساعات إضافية.</div>
+  </div>
+
+  <div class="pg" id="p3"><div id="log"></div><button class="clr" id="clr">مسح الكل</button></div>
+  <div class="hint" style="font-size:13px;color:var(--mute);margin-top:14px">يعمل بدون إنترنت بعد فتحه مرة واحدة، والبيانات محفوظة على جهازك.</div>
+  <div class="credit f">تقدمة ياسر الحسين</div>
+</div>
+
+<div class="toast" id="ts"><span id="tm"></span><button id="undo">تراجع</button></div>
+<div class="md" id="dy"><div class="kp"><h3 id="dyt" style="margin-top:0"></h3>
+  <div class="row2"><button class="bt2 g" id="dyw">✅ عمل</button><button class="bt2 y" id="dyf" style="background:var(--r)">🏖️ عطلة</button></div>
+  <div class="me" style="justify-content:space-between;margin:12px 0"><button class="rs" id="dym" style="font-size:24px;padding:6px 18px">−</button><span>⏱️ ساعات إضافية: <b id="dyv">0</b></span><button class="rs" id="dyp" style="font-size:24px;padding:6px 18px">+</button></div>
+  <div class="row2"><button class="bt2" id="dyc" style="background:var(--gray)">مسح اليوم</button><button class="bt2" id="dyx" style="background:#334155">إغلاق</button></div></div></div>
+<div class="md" id="pvw"><div class="kp" style="max-height:88vh;overflow:auto">
+  <div style="font-size:20px;font-weight:700;margin-bottom:6px">🎙️ هذا ما فهمته:</div>
+  <textarea id="pt" style="min-height:54px"></textarea>
+  <div id="pi" style="margin-top:8px"></div>
+  <div class="row" style="margin:6px 0"><button class="rs" id="pls">🔊 اسمع</button><button class="rs" id="prt">🔁 أعد التسجيل</button></div>
+  <div class="keys" style="grid-template-columns:1fr 2fr"><button class="no" id="pc">✕</button><button class="ok" id="pk" style="font-size:24px">✅ احفظ الكل</button></div>
+</div></div>
+<div class="md" id="md"><div class="kp"><div class="amt" id="am">0</div>
+  <div class="keys" id="ks"></div></div></div>
+
+<script>
+const KEY='mufakkirati_v1';let E=[];
+try{E=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){E=[]}
+const $=id=>document.getElementById(id);
+const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify(E))}catch(e){}schedPush()};
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const pd=s=>new Date(s+'T00:00:00');
+const nf=n=>Number(n).toLocaleString('ar-EG');
+$('dt').value=iso(new Date());
+const norm=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,،]/g,'');
+let last=null,tt;
+function toast(m,u){$('undo').style.display=u?'':'none';$('tm').textContent=m;$('ts').style.display='flex';last=u;clearTimeout(tt);tt=setTimeout(()=>$('ts').style.display='none',5000)}
+$('undo').onclick=()=>{if(last){E=last;persist();render()}$('ts').style.display='none'};
+function add(items,note,msg){
+  const prev=JSON.stringify(E),date=$('dt').value||iso(new Date());
+  items.forEach(p=>{
+    if(p.type==='work'||p.type==='off')E=E.filter(e=>!(e.date===date&&(e.type==='work'||e.type==='off')));
+    E.push({id:Date.now()+Math.random(),date,type:p.type,amount:p.amount||0,cur:p.cur||'',who:p.who||'',place:p.place||'',note:p.note||note||'',ts:Date.now()});
+  });
+  persist();render();toast(msg||'تم الحفظ ✓',JSON.parse(prev));
+}
+function parse(t){
+  const s=norm(t),o=[];
+  if(/(عطلة|عطله|إجازة|اجازة|راحة)/.test(s))o.push({type:'off'});
+  else if(/(عمل|دوام|اشتغلت|شغل)/.test(s))o.push({type:'work'});
+  if(/(دفعة|دفعه|قبضت|استلمت|قبض)/.test(s)){const m=s.match(/(\d+(\.\d+)?)/);o.push({type:'pay',amount:m?parseFloat(m[1]):0})}
+  if(!o.length)o.push({type:'note'});return o;
+}
+$('bw').onclick=()=>add([{type:'work'}],'','سُجّل يوم عمل ✅');
+$('bo').onclick=()=>add([{type:'off'}],'','سُجّلت عطلة 🏖️');
+$('save').onclick=()=>{const t=$('txt').value.trim();if(!t)return;add(parse(t),t);$('txt').value=''};
+// keypad
+let amt='';
+const KS=['1','2','3','4','5','6','7','8','9','✕','0','⌫'];
+KS.forEach(k=>{const b=document.createElement('button');b.textContent=k;if(k==='✕')b.className='no';
+  b.onclick=()=>{if(k==='✕'){$('md').style.display='none'}else if(k==='⌫')amt=amt.slice(0,-1);else if(amt.length<9)amt+=k;$('am').textContent=amt||'0'};$('ks').append(b)});
+const ok=document.createElement('button');ok.textContent='✓ حفظ الدفعة';ok.className='ok';ok.style.cssText='grid-column:1/4;font-size:24px';
+ok.onclick=()=>{const v=parseFloat(amt);if(!v)return;$('md').style.display='none';if(kpCb){const f=kpCb;kpCb=null;f(v);return}add([{type:'pay',amount:v}],'دفعة','سُجّلت الدفعة 💰')};$('ks').append(ok);
+$('bp').onclick=()=>{kpCb=null;amt='';$('am').textContent='0';$('md').style.display='flex'};
+// tabs
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('a',x===t));
+  document.querySelectorAll('.pg').forEach(p=>p.classList.toggle('a',p.id===t.dataset.p));render()});
+// summary
+let mode='w',off=0;
+$('mw').onclick=()=>{mode='w';off=0;render()};$('mm').onclick=()=>{mode='m';off=0;render()};
+$('pv').onclick=()=>{off--;render()};$('nx').onclick=()=>{if(off<0)off++;render()};
+function range(){
+  const n=new Date();
+  if(mode==='m'){const a=new Date(n.getFullYear(),n.getMonth()+off,1),b=new Date(a.getFullYear(),a.getMonth()+1,0);
+    return[iso(a),iso(b),a.toLocaleDateString('ar',{month:'long',year:'numeric'})]}
+  const a=new Date(n.getFullYear(),n.getMonth(),n.getDate()-((n.getDay()+1)%7)+off*7),b=new Date(a.getFullYear(),a.getMonth(),a.getDate()+6);
+  const f=d=>d.toLocaleDateString('ar',{day:'numeric',month:'long'});
+  return[iso(a),iso(b),'من '+f(a)+' إلى '+f(b)];
+}
+const dl=s=>{try{return pd(s).toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'})}catch(_){return s}};
+function row(e,del){
+  const d=document.createElement('div');d.className='it';
+  const ic=document.createElement('span');ic.className='ic';ic.textContent=(ICN[e.type]||'📝');
+  const m=document.createElement('div');m.className='m';
+  const a=document.createElement('div');a.textContent=lbl(e);
+  const b=document.createElement('div');b.className='d';b.textContent=dl(e.date);
+  m.append(a,b);d.append(ic,m);
+  const sp=document.createElement('button');sp.className='sp';sp.textContent='🔊';sp.onclick=()=>say(etext(e));d.append(sp);
+  if(del){const x=document.createElement('button');x.className='x';x.textContent='×';
+    x.onclick=()=>{E=E.filter(k=>k.id!==e.id);persist();render()};d.append(x)}
+  return d;
+}
+const cnt=(L,t)=>L.filter(e=>e.type===t).length;
+function render(){
+  $('cw').textContent=nf(cnt(E,'work'));$('co').textContent=nf(cnt(E,'off'));
+  const P=E.filter(e=>e.type==='pay');
+  $('cp').textContent=nf(P.reduce((a,e)=>a+e.amount,0));$('cpn').textContent='('+nf(P.length)+')';
+  $('mw').classList.toggle('a',mode==='w');$('mm').classList.toggle('a',mode==='m');
+  const[f,t,lab]=range();$('pl').textContent=lab;
+  const L=E.filter(e=>e.date>=f&&e.date<=t).sort((a,b)=>a.date.localeCompare(b.date)||a.ts-b.ts);
+  const PP=L.filter(e=>e.type==='pay');
+  $('sw').textContent=nf(cnt(L,'work'));$('so').textContent=nf(cnt(L,'off'));
+  $('sp').textContent=nf(PP.reduce((a,e)=>a+e.amount,0));$('spn').textContent='('+nf(PP.length)+')';
+  $('sl').innerHTML=L.length?'':'<div class="empty">لا توجد تسجيلات في هذه الفترة.</div>';
+  L.forEach(e=>$('sl').append(row(e,false)));
+  const A=[...E].sort((a,b)=>b.date.localeCompare(a.date)||b.ts-a.ts);
+  $('log').innerHTML=A.length?'':'<div class="empty">لا توجد ملاحظات بعد.</div>';
+  A.forEach(e=>$('log').append(row(e,true)));
+  renderBk();renderEx();renderMore();
+}
+$('clr').onclick=()=>{if(E.length&&confirm('مسح كل السجل؟')){E=[];persist();render()}};
+// backup
+const CFG=KEY+'_cfg',SNP=KEY+'_snaps',LST=KEY+'_last',DAY=864e5,IV={d:DAY,w:7*DAY,m:30*DAY};
+let cfg={freq:'w'},snaps=[];
+try{cfg=Object.assign(cfg,JSON.parse(localStorage.getItem(CFG)||'{}'))}catch(e){}
+try{snaps=JSON.parse(localStorage.getItem(SNP)||'[]')}catch(e){}
+const lastExp=()=>{try{return +localStorage.getItem(LST)||0}catch(e){return 0}};
+const sorted=L=>[...L].sort((a,b)=>a.date.localeCompare(b.date)||a.ts-b.ts);
+const payload=()=>JSON.stringify({app:'mufakkirati',v:1,date:new Date().toISOString(),entries:sorted(E),profile:P});
+function snap(){if(!E.length)return;snaps.unshift({ts:Date.now(),entries:sorted(E)});snaps=snaps.slice(0,10);try{localStorage.setItem(SNP,JSON.stringify(snaps))}catch(e){}}
+function autoSnap(){const l=snaps[0];if(E.length&&(!l||Date.now()-l.ts>=IV[cfg.freq]))snap()}
+autoSnap();
+const fdt=ts=>new Date(ts).toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long',hour:'numeric',minute:'2-digit'});
+function exported(){try{localStorage.setItem(LST,String(Date.now()))}catch(e){}render()}
+const fname=()=>'mufakkirati-'+iso(new Date())+'.txt';
+async function shareBk(){
+  const data=payload();
+  try{
+    const f=new File([data],fname(),{type:'text/plain'});
+    if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'نسخة مفكرتي'});exported();return}
+    if(navigator.share){await navigator.share({title:'نسخة مفكرتي',text:data});exported();return}
+  }catch(e){if(e&&e.name==='AbortError')return}
+  try{await navigator.clipboard.writeText(data);alert('تم نسخ البيانات. الصقها في واتساب.');exported()}catch(e){alert('تعذّر الإرسال. استخدم زر حفظ ملف.')}
+}
+async function saveBk(){
+  const data=payload(),name=fname();
+  try{if(window.claude&&claude.use){const d=await claude.use('downloads');if(d){await d.save({filename:name,data});exported();return}}}catch(e){if(e&&e.code==='declined')return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'text/plain'}));a.download=name;document.body.append(a);a.click();a.remove();exported();
+}
+function merge(arr){const ids=new Set(E.map(e=>e.id));let n=0;arr.forEach(e=>{if(e&&e.date&&e.type&&!ids.has(e.id)){E.push(e);n++}});E=sorted(E);persist();return n}
+$('bsh').onclick=shareBk;$('bsf').onclick=saveBk;$('brs').onclick=()=>$('fi').click();
+$('fi').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;
+  try{const j=JSON.parse(await f.text());if(j.app!=='mufakkirati'||!Array.isArray(j.entries))throw 0;snap();const n=merge(j.entries);render();toast('تم استرجاع '+n+' تسجيل ✓',null)}catch(e){alert('الملف غير صالح')}};
+function restoreSnap(i){if(!confirm('استرجاع هذه النسخة؟ ستُدمج مع السجل الحالي.'))return;const en=snaps[i].entries;snap();merge(en);render();toast('تم الاسترجاع ✓',null)}
+document.querySelectorAll('#p4 .seg button').forEach(b=>b.onclick=()=>{cfg.freq=b.dataset.f;try{localStorage.setItem(CFG,JSON.stringify(cfg))}catch(e){}autoSnap();render()});
+$('bn').onclick=()=>document.querySelector('[data-p=p4]').click();
+function renderBk(){
+  const l=lastExp();
+  $('lb').textContent=l?'آخر نسخة خارجية: '+fdt(l):'لم تُحفظ نسخة خارجية بعد';
+  document.querySelectorAll('#p4 .seg button').forEach(b=>b.classList.toggle('a',b.dataset.f===cfg.freq));
+  $('bn').style.display=(E.length&&Date.now()-l>IV[cfg.freq])?'block':'none';
+  $('sn').innerHTML=snaps.length?'':'<div class="empty">لا توجد نسخ بعد.</div>';
+  snaps.forEach((s,i)=>{
+    const d=document.createElement('div');d.className='it';
+    const ic=document.createElement('span');ic.className='ic';ic.textContent='🗂️';
+    const m=document.createElement('div');m.className='m';
+    const a=document.createElement('div');a.textContent=fdt(s.ts);
+    const b=document.createElement('div');b.className='d';b.textContent='عمل '+cnt(s.entries,'work')+' • عطلة '+cnt(s.entries,'off')+' • دفعات '+cnt(s.entries,'pay');
+    m.append(a,b);
+    const r=document.createElement('button');r.className='rs';r.textContent='🔄 استرجاع';r.onclick=()=>restoreSnap(i);
+    d.append(ic,m,r);$('sn').append(d);
+  });
+}
+// speak
+function say(t){
+  if(!window.speechSynthesis){alert('المتصفح لا يدعم النطق.');return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;speechSynthesis.speak(u);
+}
+function etext(e){return dl(e.date)+'، '+lbl(e,true)}
+function sumText(L){
+  const P=L.filter(e=>e.type==='pay');
+  return 'أيام العمل '+cnt(L,'work')+'، أيام العطلة '+cnt(L,'off')+'، عدد الدفعات '+P.length+'، مجموع الدفعات '+P.reduce((a,e)=>a+e.amount,0)+'.';
+}
+$('sph').onclick=()=>say('الملخص الكلي. '+sumText(E));
+$('sps').onclick=()=>{
+  const[f,t,lab]=range();
+  const L=E.filter(e=>e.date>=f&&e.date<=t).sort((a,b)=>a.date.localeCompare(b.date));
+  say(lab+'. '+sumText(L)+(L.length?' التفاصيل. '+L.map(etext).join('. '):' لا توجد تسجيلات.'));
+};
+// ---- smart parse
+//#parse-start
+const AN=s=>s.replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
+const NU={},KW={},CUR={دولار:'دولار',دولارات:'دولار',دينار:'دينار',دنانير:'دينار',ليره:'ليرة',ليرات:'ليرة',ريال:'ريال',ريالات:'ريال',درهم:'درهم',دراهم:'درهم',جنيه:'جنيه',جنيهات:'جنيه',يورو:'يورو',شيكل:'شيكل'};
+(()=>{
+ const U={واحد:1,احد:1,اثنين:2,اثنان:2,اثنتين:2,اثنا:2,اثني:2,ثلاث:3,ثلاثه:3,اربع:4,اربعه:4,خمس:5,خمسه:5,ست:6,سته:6,سبع:7,سبعه:7,ثمان:8,ثماني:8,ثمانيه:8,تسع:9,تسعه:9};
+ for(const k in U)NU[k]=['u',U[k]];
+ NU['عشر']=NU['عشره']=['t',10];
+ const T={عشرين:20,عشرون:20,ثلاثين:30,ثلاثون:30,اربعين:40,اربعون:40,خمسين:50,خمسون:50,ستين:60,ستون:60,سبعين:70,سبعون:70,ثمانين:80,ثمانون:80,تسعين:90,تسعون:90};
+ for(const k in T)NU[k]=['t',T[k]];
+ const H1=['مئه','مائه','ميه','مايه'],H2=['مئتين','مائتين','مئتي','مائتي','ميتين','مئتان','مائتان'];
+ H1.forEach(w=>NU[w]=['h',100]);H2.forEach(w=>NU[w]=['h',200]);
+ [['ثلاث',3],['ثلث',3],['اربع',4],['خمس',5],['ست',6],['سبع',7],['ثمان',8],['تسع',9]].forEach(([p,n])=>H1.forEach(h=>NU[p+h]=['h',n*100]));
+ ['الف','الاف'].forEach(w=>NU[w]=['k',1000]);['الفين','الفان'].forEach(w=>NU[w]=['f',2000]);
+ NU['مليون']=NU['ملايين']=['k',1e6];
+ [['work','عمل دوام اشتغلت اشتغل شغل عملت داومت'],['off','عطله اجازه راحه استراحه'],['pay','واصل وصل قبضت قبض استلمت دفعه استلام وصلني'],['adv','سلفه سلف استلفت سلفت'],['debt','دين مديون'],['place','ورشه مشروع موقع مصنع محل مزرعه معمل']]
+  .forEach(([k,s])=>s.split(' ').forEach(w=>KW[w]=k));
+})();
+const nuw=w=>NU[w]||(w[0]==='و'&&NU[w.slice(1)])||null;
+function numAt(tk,i){
+ let tot=0,cur=0,last='',j=i,used=false;
+ for(;j<tk.length;j++){
+  const w=tk[j];
+  if(/^\d+(\.\d+)?$/.test(w)){if(used&&last!=='k')break;cur+=parseFloat(w);last='d';used=true;continue}
+  const v=nuw(w);if(!v)break;
+  const ty=v[0],n=v[1];
+  if(ty==='u'||ty==='t')cur+=n;
+  else if(ty==='h'){if(n===100&&last==='u'&&cur>=1&&cur<=9)cur*=100;else cur+=n}
+  else if(ty==='k'){tot+=(cur||1)*n;cur=0}
+  else if(ty==='f')tot+=n;
+  last=ty;used=true;
+ }
+ return used?{val:tot+cur,end:j}:null;
+}
+function parse(t){
+ const O=t.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/(\d)[,٬،](?=\d{3}(?!\d))/g,'$1').replace(/[،,؛;!؟?]|\.(?!\d)/g,' | ').split(/\s+/).filter(Boolean);
+ const tk=O.map(AN),out=[];
+ const ky=w=>KW[w]||(w[0]==='و'&&KW[w.slice(1)])||(w==='|'?'|':'');
+ const isn=w=>/\d/.test(w)||!!nuw(w)||!!CUR[w];
+ const stop=k=>k>=tk.length||!!ky(tk[k])||isn(tk[k]);
+ const rng=i=>{let e=i+1;while(e<tk.length&&!ky(tk[e])&&e<i+6)e++;return e-1};
+ const amt=(a,b)=>{for(let k=Math.max(a,0);k<=b&&k<tk.length;k++){const r=numAt(tk,k);if(r)return{v:r.val,c:CUR[tk[r.end]]||''}}return null};
+ const nm=k=>{const w=O[k],n=tk[k];return(n[0]==='و'&&n.length>3&&!KW[n])?w.slice(1):w};
+ const S=k=>{const n=tk[k];return(n[0]==='و'&&n.length>2&&!KW[n])?n.slice(1):n};
+ const li=['لي','ليا','عندي'];
+ let place='';
+ tk.forEach((w,i)=>{
+  const ty=ky(w);if(!ty||ty==='|')return;
+  if(ty==='work'||ty==='off'){out.push({type:ty});return}
+  if(ty==='pay'||ty==='adv'){const a=amt(i+1,rng(i)),lo=out[out.length-1];if(!a&&lo&&lo.type===ty&&i-lo.k<=3)return;if(!a&&ky(tk[i+1]||'')===ty)return;out.push({type:ty,amount:a?a.v:0,cur:a?a.c:'',k:i});return}
+  if(ty==='place'){const p=[];for(let k=i+1;k<tk.length&&p.length<3&&!stop(k);k++)p.push(O[k]);if(p.length)place=nm(i)+' '+p.join(' ');return}
+  if(ty==='debt'){
+   const Lx=[];for(let k=i-1;k>=Math.max(0,i-2)&&!stop(k);k--)Lx.unshift(k);
+   const Rx=[];for(let k=i+1;k<Math.min(tk.length,i+8)&&!ky(tk[k]);k++)Rx.push(k);
+   const all=[...Lx,...Rx];
+   const hasMe=all.some(k=>S(k)==='مني');
+   const hasLi=Lx.concat(Rx.slice(0,1)).some(k=>li.includes(S(k)));
+   const pre=Lx.length&&S(Lx[Lx.length-1])==='علي';
+   const iOn=Rx.findIndex(k=>S(k)==='علي'||S(k)==='عند');
+   const forL=all.find(k=>/^ل.{2,}$/.test(S(k))&&!li.includes(S(k)));
+   let type=hasMe?'dme':hasLi?'dli':pre?'dme':(iOn===0&&forL!==undefined)?'dme':iOn>=0?'dli':forL!==undefined?'dme':'dli';
+   let who='';
+   if(type==='dli'&&iOn>=0){const k=Rx[iOn+1];if(k!==undefined&&!isn(tk[k]))who=nm(k)}
+   if(type==='dli'&&!who){const k=all.find(k=>!isn(tk[k])&&!['علي','عند','لي','ليا','عندي','مني'].includes(S(k)));if(k!==undefined)who=nm(k)}
+   if(type==='dme'&&forL!==undefined){let x=nm(forL);if(x.length>2&&x[0]==='ل')x=x.slice(1);who=x}
+   const a=amt(i+1,Rx.length?Rx[Rx.length-1]:i);
+   out.push({type,who,amount:a?a.v:0,cur:a?a.c:''});
+  }
+ });
+ if(place){const w=out.find(o=>o.type==='work');if(w)w.place=place;else out.push({type:'note',note:place,place})}
+ if(!out.length)out.push({type:'note',note:t.trim()});
+ return out;
+}
+//#parse-end
+const ICN={ot:'⏱️',work:'✅',off:'🏖️',pay:'💰',adv:'💵',dli:'🤝',dme:'🧾',note:'📝'};
+function money(e,sp){return(e.amount?(sp?e.amount:nf(e.amount)):'؟')+(e.cur?' '+e.cur:(!sp&&P.cur&&e.amount?' '+P.cur:''))}
+function lbl(e,sp){
+ const m=money(e,sp);
+ return({work:'يوم عمل'+(e.place?' — '+e.place:''),off:'عطلة',ot:'ساعات إضافية '+e.amount,pay:'دفعة '+m,adv:'سلفة '+m,dli:'دين لي على '+(e.who||'—')+' '+m,dme:'دين عليّ لـ'+(e.who||'—')+' '+m,note:e.note})[e.type]||'';
+}
+function sumText(L){
+ const P=L.filter(e=>e.type==='pay'),s=t=>L.filter(e=>e.type===t).reduce((a,e)=>a+e.amount,0);
+ let r='أيام العمل '+cnt(L,'work')+'، أيام العطلة '+cnt(L,'off')+'، عدد الدفعات '+P.length+'، مجموع الدفعات '+s('pay')+'.';
+ if(s('adv'))r+=' السلف '+s('adv')+'.';if(s('dli'))r+=' الديون لك '+s('dli')+'.';if(s('dme'))r+=' الديون عليك '+s('dme')+'.';
+ return r;
+}
+function exTxt(L){const s=t=>L.filter(e=>e.type===t).reduce((a,e)=>a+e.amount,0);
+ return[['💵 سلف',s('adv')],['🤝 لي',s('dli')],['🧾 عليّ',s('dme')]].filter(x=>x[1]).map(x=>'<span>'+x[0]+' '+nf(x[1])+'</span>').join('')}
+function renderEx(){$('ex1').innerHTML=exTxt(E);const[f,t]=range();$('ex2').innerHTML=exTxt(E.filter(e=>e.date>=f&&e.date<=t))}
+// ---- full voice + preview
+let pvItems=[],pvText='',kpCb=null,frec=null,fon=false,ftxt='';
+const HAS=['pay','adv','dli','dme'];
+function readPv(){say(pvItems.length?'فهمت: '+pvItems.map(i=>lbl(i,true)).join('، ')+'. إذا كان صحيحًا اضغط الزر الأخضر للحفظ.':'لم أفهم. أعد التسجيل.')}
+function renderPv(){
+ $('pi').innerHTML=pvItems.length?'':'<div class="empty">لم أفهم شيئًا. أعد التسجيل.</div>';
+ pvItems.forEach((it,i)=>{
+  const d=document.createElement('div');d.className='it';
+  const ic=document.createElement('span');ic.className='ic';ic.textContent=ICN[it.type]||'📝';
+  if(it.type==='dli'||it.type==='dme'){ic.style.cursor='pointer';ic.onclick=()=>{it.type=it.type==='dli'?'dme':'dli';renderPv()}}
+  const m=document.createElement('div');m.className='m';m.textContent=lbl(it);
+  d.append(ic,m);
+  if(HAS.includes(it.type)){const b=document.createElement('button');b.className='rs';b.textContent='✏️';
+   b.onclick=()=>{kpCb=v=>{it.amount=v;renderPv()};amt='';$('am').textContent='0';$('md').style.display='flex'};d.append(b)}
+  const x=document.createElement('button');x.className='x';x.textContent='×';x.onclick=()=>{pvItems.splice(i,1);renderPv()};d.append(x);
+  $('pi').append(d);
+ });
+}
+function openPv(t){if(!t)return;pvText=t;$('pt').value=t;pvItems=parse(t);renderPv();$('pvw').style.display='flex';readPv()}
+$('pt').oninput=()=>{pvText=$('pt').value;pvItems=parse(pvText);renderPv()};
+$('pls').onclick=readPv;$('pc').onclick=()=>{speechSynthesis&&speechSynthesis.cancel();$('pvw').style.display='none'};
+$('prt').onclick=()=>{$('pvw').style.display='none';$('full').click()};
+$('pk').onclick=()=>{if(!pvItems.length)return;$('pvw').style.display='none';add(pvItems.map(x=>({...x})),pvText,'سُجّل كل شيء ✓')};
+$('full').onclick=()=>{
+ const SRx=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SRx){alert('المتصفح لا يدعم الإدخال الصوتي. استخدم Chrome.');return}
+ if(fon){frec&&frec.stop();return}
+ ftxt='';frec=new SRx();frec.lang=cfg.lang||'ar-SA';frec.continuous=true;frec.interimResults=false;
+ frec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal)ftxt+=' '+e.results[i][0].transcript};
+ frec.onend=()=>{fon=false;$('full').classList.remove('on');$('full').textContent='🎙️ تسجيل كامل بالصوت';openPv(ftxt.trim())};
+ frec.onerror=()=>{};
+ frec.start();fon=true;$('full').classList.add('on');$('full').textContent='⏹ انتهيت (اضغط هنا)';
+};
+$('lg').value=cfg.lang||'ar-SA';
+$('lg').onchange=()=>{cfg.lang=$('lg').value;try{localStorage.setItem(CFG,JSON.stringify(cfg))}catch(e){}};
+// ---- profile
+const PK=KEY+'_p',defP={name:'',job:'',work:'',phone:'',city:'',cur:'',dw:0,otr:0,we:[5,6],pic:''};
+let P={...defP};try{P={...defP,...JSON.parse(localStorage.getItem(PK)||'{}')}}catch(e){}
+function saveP(){try{localStorage.setItem(PK,JSON.stringify(P))}catch(e){}schedPush()}
+const WSN=['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'],MN2=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const fm=x=>nf(x)+(P.cur?' '+P.cur:'');
+function avat(el){el.innerHTML='';if(P.pic){const i=document.createElement('img');i.src=P.pic;el.append(i)}else el.textContent=((P.name||'').trim()[0])||'👤'}
+function hdrP(){avat($('av'));avat($('prav'));$('hn').textContent=P.name||'أهلًا بك 👋';$('hs').textContent=[P.job,P.work,P.city].filter(Boolean).join(' • ')||'أدخل بياناتك من تبويب «حسابي»'}
+[['prn','name'],['prj','job'],['prw','work'],['prph','phone'],['prc','city'],['prcu','cur']].forEach(([i,k])=>{$(i).value=P[k]||'';$(i).oninput=()=>{P[k]=$(i).value;saveP();hdrP();render()}});
+[['prdw','dw'],['prot','otr']].forEach(([i,k])=>{$(i).value=P[k]||'';$(i).oninput=()=>{P[k]=parseFloat($(i).value)||0;saveP();render()}});
+WSN.forEach((w,i)=>{const b=document.createElement('button');b.textContent=w;b.onclick=()=>{const s=new Set(P.we);s.has(i)?s.delete(i):s.add(i);P.we=[...s];saveP();render()};$('prwe').append(b)});
+$('prpb').onclick=()=>$('prpic').click();$('prpx').onclick=()=>{P.pic='';saveP();hdrP()};
+$('prpic').onchange=ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;const r=new FileReader();
+ r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),s=Math.min(im.width,im.height),S=160;c.width=c.height=S;c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,S,S);P.pic=c.toDataURL('image/jpeg',.7);saveP();hdrP()};im.src=r.result};r.readAsDataURL(f)};
+function applyProfile(pf){if(!pf)return;Object.keys(defP).forEach(k=>{if(k!=='we'&&!P[k]&&pf[k])P[k]=pf[k]});try{localStorage.setItem(PK,JSON.stringify(P))}catch(e){}
+ [['prn','name'],['prj','job'],['prw','work'],['prph','phone'],['prc','city'],['prcu','cur'],['prdw','dw'],['prot','otr']].forEach(([i,k])=>{$(i).value=P[k]||''})}
+// ---- wages + report
+function wage(L){const d=cnt(L,'work'),ot=L.filter(e=>e.type==='ot').reduce((a,e)=>a+e.amount,0),s=t=>L.filter(e=>e.type===t).reduce((a,e)=>a+e.amount,0);
+ const due=d*P.dw+ot*P.otr,got=s('pay'),adv=s('adv');return{d,ot,due,got,adv,bal:due-got-adv}}
+function renderWg(){const[f,t]=range(),L=E.filter(e=>e.date>=f&&e.date<=t);
+ if(!(P.dw||P.otr)){$('wg').innerHTML='<div class="empty" style="font-size:15px">أدخل الأجر اليومي وأجر الساعة من «حسابي» لتظهر المستحقات.</div>';return}
+ const w=wage(L);
+ $('wg').innerHTML=[['⏱️ ساعات إضافية',nf(w.ot)+' س'],['💼 المستحق',fm(w.due)],['💰 المقبوض',fm(w.got)],['💵 السلف',fm(w.adv)],['🟰 الباقي لك',fm(w.bal)]].map(x=>'<div class="it" style="justify-content:space-between"><span>'+x[0]+'</span><b>'+x[1]+'</b></div>').join('')}
+async function shareText(t){const w=window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');if(w)return;
+ try{if(navigator.share){await navigator.share({text:t});return}}catch(e){if(e&&e.name==='AbortError')return}
+ try{await navigator.clipboard.writeText(t);toast('تم نسخ التقرير، الصقه في واتساب',null)}catch(e){toast('تعذّرت المشاركة',null)}}
+$('rp').onclick=()=>{const[f,t,lab]=range(),L=sorted(E.filter(e=>e.date>=f&&e.date<=t));
+ let tx='📋 تقرير '+lab+'\n'+(P.name?P.name+(P.work?' — '+P.work:'')+'\n':'')+sumText(L);
+ const w=wage(L);if(w.ot)tx+=' الساعات الإضافية '+w.ot+'.';
+ if(P.dw||P.otr)tx+='\nالمستحق '+fm(w.due)+'، الباقي لك '+fm(w.bal);
+ tx+='\n\nالتفاصيل:\n'+(L.length?L.map(e=>e.date+' — '+lbl(e,true)).join('\n'):'لا توجد تسجيلات.');shareText(tx)};
+// ---- calendar
+let cm=new Date();cm=new Date(cm.getFullYear(),cm.getMonth(),1);let dsel='';
+$('kn').onclick=()=>{cm=new Date(cm.getFullYear(),cm.getMonth()+1,1);render()};$('kp').onclick=()=>{cm=new Date(cm.getFullYear(),cm.getMonth()-1,1);render()};
+function dayMap(){const m={};E.forEach(e=>{const o=m[e.date]||(m[e.date]={t:'',ot:0});if(e.type==='work'||e.type==='off')o.t=e.type;else if(e.type==='ot')o.ot+=e.amount});return m}
+function renderCal(){$('kl').textContent=MN2[cm.getMonth()]+' '+cm.getFullYear();const g=$('kg'),M=dayMap();g.innerHTML='';
+ WSN.forEach(w=>{const d=document.createElement('div');d.className='wd';d.textContent=w;g.append(d)});
+ for(let i=0;i<cm.getDay();i++)g.append(document.createElement('div'));
+ for(let d=1,n=new Date(cm.getFullYear(),cm.getMonth()+1,0).getDate();d<=n;d++){const dt=new Date(cm.getFullYear(),cm.getMonth(),d),k=iso(dt),x=M[k]||{};
+  const b=document.createElement('button');b.className='dc'+(x.t==='work'?' w':x.t==='off'?' o':'')+(P.we.includes(dt.getDay())?' we':'')+(k===iso(new Date())?' t':'');b.textContent=d;
+  if(x.ot){const s=document.createElement('small');s.textContent=nf(x.ot)+'س';b.append(s)}b.onclick=()=>openDay(k);g.append(b)}}
+const dayInfo=k=>{const L=E.filter(e=>e.date===k);return{ot:L.filter(e=>e.type==='ot').reduce((a,e)=>a+e.amount,0)}};
+function openDay(k){dsel=k;$('dyt').textContent=dl(k);$('dyv').textContent=nf(dayInfo(k).ot);$('dy').style.display='flex'}
+const mk=(k,type,amount)=>({id:Date.now()+Math.random(),date:k,type,amount:amount||0,cur:'',who:'',place:'',note:'',ts:Date.now()});
+function setT(k,t){E=E.filter(e=>!(e.date===k&&(e.type==='work'||e.type==='off')));E.push(mk(k,t));persist();render()}
+function addOt(k,d){const o=E.find(e=>e.date===k&&e.type==='ot');if(o){o.amount=Math.max(0,o.amount+d);if(!o.amount)E=E.filter(x=>x!==o)}else if(d>0)E.push(mk(k,'ot',d));persist();render()}
+$('dyw').onclick=()=>setT(dsel,'work');$('dyf').onclick=()=>setT(dsel,'off');
+$('dyc').onclick=()=>{E=E.filter(e=>!(e.date===dsel&&(e.type==='work'||e.type==='off'||e.type==='ot')));persist();render()};
+$('dym').onclick=()=>addOt(dsel,-.5);$('dyp').onclick=()=>addOt(dsel,.5);
+$('dyx').onclick=()=>$('dy').style.display='none';$('dy').onclick=e=>{if(e.target===$('dy'))$('dy').style.display='none'};
+// ---- cloud (Firebase email/password + Firestore)
+let fbU=null,fbDb=null,fbOk=false,dirty=false,syncT=null;
+function schedPush(){if(fbU){clearTimeout(syncT);syncT=setTimeout(push,2500)}}
+function setCloudUI(msg){const cfg=!!(window.FB_CONFIG&&window.FB_CONFIG.apiKey);
+ $('cln').style.display=cfg?'none':'block';$('clf').style.display=(cfg&&fbOk&&!fbU)?'block':'none';$('clo').style.display=(cfg&&fbU)?'block':'none';
+ let s=!cfg?'':(!fbOk?'⏳ جارٍ تحميل خدمة السحابة…':fbU?'✅ متصل بالسحابة':'غير مسجّل الدخول');if(msg)s=msg;$('clst').textContent=s;
+ if(fbU){let t=0;try{t=+localStorage.getItem(KEY+'_cl')||0}catch(e){}$('clme').textContent=fbU.email+(t?' — آخر حفظ: '+fdt(t):'')+(dirty?' (بانتظار الاتصال)':'')}}
+async function push(){if(!fbU||!fbDb)return;if(!navigator.onLine){dirty=true;setCloudUI();return}
+ try{await fbDb.collection('users').doc(fbU.uid).set({data:payload(),updated:Date.now(),email:fbU.email});try{localStorage.setItem(KEY+'_cl',String(Date.now()))}catch(e){}dirty=false;setCloudUI()}
+ catch(e){dirty=true;setCloudUI('تعذّر الحفظ في السحابة، ستُعاد المحاولة لاحقًا')}}
+async function pullMerge(auto){if(!fbU||!fbDb)return;
+ try{const d=await fbDb.collection('users').doc(fbU.uid).get();let n=0;
+  if(d.exists){const j=JSON.parse(d.data().data);n=merge(j.entries||[]);applyProfile(j.profile);hdrP();render()}
+  await push();toast(n?'تم جلب '+n+' تسجيل من السحابة ✓':(auto?'تمت المزامنة ✓':'لا جديد في السحابة'),null)}
+ catch(e){toast('تعذّر الاتصال بالسحابة',null)}}
+const AE={'auth/invalid-email':'البريد غير صحيح','auth/weak-password':'كلمة المرور ضعيفة (6 أحرف على الأقل)','auth/email-already-in-use':'هذا البريد مسجّل مسبقًا، اضغط دخول','auth/wrong-password':'كلمة المرور خاطئة','auth/invalid-credential':'البريد أو كلمة المرور غير صحيحة','auth/user-not-found':'لا يوجد حساب بهذا البريد','auth/network-request-failed':'لا يوجد اتصال بالإنترنت','auth/too-many-requests':'محاولات كثيرة، حاول لاحقًا'};
+const em=()=>$('clem').value.trim(),pw=()=>$('clpw').value;
+async function au(f){if(!em()||!pw()){toast('أدخل البريد وكلمة المرور',null);return}try{await f();$('clpw').value=''}catch(e){toast(AE[e.code]||'تعذّر تنفيذ الطلب',null)}}
+$('clin').onclick=()=>au(()=>firebase.auth().signInWithEmailAndPassword(em(),pw()));
+$('clup').onclick=()=>au(()=>firebase.auth().createUserWithEmailAndPassword(em(),pw()));
+$('clrs').onclick=async()=>{if(!em()){toast('أدخل بريدك أولًا',null);return}try{await firebase.auth().sendPasswordResetEmail(em());toast('أُرسل رابط استعادة كلمة المرور إلى بريدك',null)}catch(e){toast(AE[e.code]||'تعذّر الإرسال',null)}};
+$('clout').onclick=()=>firebase.auth().signOut();
+$('clsv').onclick=async()=>{await push();toast(dirty?'تعذّر الحفظ، تحقق من الاتصال':'تم الحفظ في السحابة ✓',null)};
+$('clpl').onclick=()=>pullMerge(false);
+addEventListener('online',()=>{if(dirty)push()});
+function cloudInit(){const c=window.FB_CONFIG;if(!c||!c.apiKey){setCloudUI();return}
+ const ld=s=>new Promise((a,b)=>{const e=document.createElement('script');e.src=s;e.onload=a;e.onerror=b;document.head.append(e)}),B='https://www.gstatic.com/firebasejs/10.12.2/';
+ ld(B+'firebase-app-compat.js').then(()=>Promise.all([ld(B+'firebase-auth-compat.js'),ld(B+'firebase-firestore-compat.js')])).then(()=>{
+  firebase.initializeApp(c);fbDb=firebase.firestore();fbOk=true;
+  firebase.auth().onAuthStateChanged(u=>{fbU=u;setCloudUI();if(u)pullMerge(true)});setCloudUI()})
+ .catch(()=>setCloudUI('تعذّر تحميل خدمة السحابة (تحتاج إنترنت أول مرة)'))}
+function renderMore(){hdrP();renderWg();renderCal();setCloudUI();if($('dy').style.display==='flex')$('dyv').textContent=nf(dayInfo(dsel).ot)}
+hdrP();cloudInit();
+// voice
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null,on=false;
+$('mic').onclick=()=>{
+  if(!SR){alert('المتصفح لا يدعم الإدخال الصوتي. استخدم Chrome.');return}
+  if(on){rec&&rec.stop();return}
+  rec=new SR();rec.lang=cfg.lang||'ar-SA';rec.interimResults=false;
+  rec.onresult=e=>{const r=e.results[e.results.length-1][0].transcript;add(parse(r),r,'سُجّل: '+r)};
+  rec.onend=()=>{on=false;$('mic').classList.remove('on');$('mic').textContent='🎤 تحدّث'};
+  rec.onerror=()=>{};
+  rec.start();on=true;$('mic').classList.add('on');$('mic').textContent='⏹ إيقاف';
+};
+function net(){const o=navigator.onLine;$('st').classList.toggle('off',!o);$('stt').textContent=o?'متصل':'غير متصل (يعمل محليًا)'}
+addEventListener('online',net);addEventListener('offline',net);net();render();
+// install + offline
+let dp=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('ins').style.display='block'});
+$('ins').onclick=async()=>{if(!dp)return;dp.prompt();try{await dp.userChoice}catch(e){}dp=null;$('ins').style.display='none'};
+addEventListener('appinstalled',()=>{$('ins').style.display='none'});
+const sa=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!sa)$('ios').style.display='block';
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
+</script>
+</body>
+</html>
